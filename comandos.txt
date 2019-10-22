@@ -1,0 +1,64 @@
+yarn init -y
+
+yarn add typescript -D
+
+yarn tsc --init
+
+# Descomente em tsconfig.json
+"target": "es6",
+"outDir": "./dist",
+"rootDir": "./src",
+"moduleResolution": "node",
+
+# Entre as duas últimas chaves
+},
+  "exclude": ["node_modules"]
+}
+
+# Depois de configurado, execute
+yarn tsc
+
+node dist/index.js
+
+yarn add express pg
+
+yarn add @types/express @types/pg -D
+
+yarn add nodemon -D
+
+yarn add concurrently -D
+
+# Crie o script no package.json
+"scripts": {
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\""
+  },
+
+yarn dev
+
+sudo -u postgres psql
+
+create database postgresql_typescript_fazt_db;
+
+\l
+
+\c postgresql_typescript_fazt_db;
+
+create table users (
+  id serial primary key,
+  name text not null,
+  email text unique not null
+);
+
+\d users
+
+insert into users (
+  name, email
+) values (
+  'Name One', 'name.one@email.com'
+), (
+  'Name Two', 'name.two@email.com'
+), (
+  'Name Three', 'name.three@email.com'
+);
+
+select * from users;
